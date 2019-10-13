@@ -1,0 +1,147 @@
+<html>
+
+    <head>
+        <title>Curso Javascript</title>
+    </head>
+
+    <body>
+
+        <style>
+        .quad {
+            margin: 10px;
+        }
+        </style>
+
+        <input type="text" name="nome">
+        <button onClick="adicionar()">Adicionar</button>
+
+        <div id="exercise1">
+            <button class="botao">Clique-me</button>
+        </div>
+        
+
+        <!-- <div id="app">
+            <input type="text" id="nome">
+        </div>
+
+        <div id="box"></div> -->
+
+        <script>
+            
+            // var linkElement = document.createElement('a');
+            // linkElement.setAttribute('href', 'http://rocketseat.com.br');
+
+            // var textElement = document.createTextNode('Acessar site');
+            // linkElement.appendChild(textElement);
+
+            // var containerElement = document.querySelector('#app');
+            // containerElement.appendChild(linkElement);  
+
+            // var inputElement = document.querySelector('#nome'); 
+            // containerElement.removeChild(inputElement);        
+
+            // var boxElement = document.querySelector("#box");
+            // boxElement.style.width = 100;
+            // boxElement.style.height = 100;
+            // boxElement.style.backgroundColor = '#f00';
+
+            // Exercício 1
+            // Crie um botão que ao ser clicado cria um novo elemento em tela com a forma de um quadrado
+            // vermelho com 100px de altura e largura. Sempre que o botão for clicado um novo quadrado deve
+            // aparecer na tela.
+
+            var btnElement = document.querySelector('button.botao');
+
+            btnElement.onclick = function(){
+
+                var quadradoElement = document.createElement('div');
+                quadradoElement.style.width  = 100;
+                quadradoElement.style.height = 100;
+                quadradoElement.style.backgroundColor = '#f00';
+                
+                quadradoElement.classList.add('quad');
+                quadradoElement.onmouseover = function(){
+                    var newColor = getRandomColor(); // #E943F0
+                    quadradoElement.style.backgroundColor = newColor;
+                }
+
+                var divElement = document.querySelector('#exercise1');
+                divElement.appendChild(quadradoElement);
+
+            }
+
+            // Exercício 2
+            // Utilizando o resultado do primeiro desafio, toda vez que o usuário passar o mouse por cima de
+            // algum quadrado troque sua cor para uma cor aleatória gerada pela função abaixo:
+
+            var divExerciseElement = document.querySelector('.quad');
+            console.log(divExerciseElement);
+            if (divExerciseElement){
+                divExerciseElement.onmouseover = function(){
+                    var newColor = getRandomColor(); // #E943F0
+                    divExerciseElement.style.backgroundColor = newColor;
+                }
+            }
+
+            function getRandomColor() {
+
+                var letters = "0123456789ABCDEF";
+                var color = "#";
+
+                for (var i = 0; i < 6; i++) {
+                    color += letters[Math.floor(Math.random() * 16)];
+                }
+
+                return color;
+
+            }
+
+            // Exercício 3
+
+            var nomes = ["Diego", "Gabriel", "Lucas"];
+            var listElement = document.createElement('ul');
+            
+            for(value of nomes){
+                
+                var liElement   = document.createElement('li');
+                var textElement = document.createTextNode(value);
+                liElement.appendChild(textElement);
+
+                listElement.appendChild(liElement);
+                
+            }
+
+            var exerciseElement = document.querySelector('#exercise1');
+            exerciseElement.appendChild(listElement);
+
+            // Exercíco 4
+            // Seguindo o resultado do exercício anterior adicione um input em tela e um botão como a seguir:
+            // <input type="text" name="nome">
+            // <button onClick="adicionar()">Adicionar</button>
+            // Ao clicar no botão, a função adicionar() deve ser disparada adicionando um novo item a lista de
+            // nomes baseado no nome preenchido no input e renderizando o novo item em tela juntos aos
+            // demais itens anteriores. Além disso, o conteúdo do input deve ser apagado após o clique.
+
+            function adicionar(){
+                
+                var inputElement = document.querySelector("input[name=nome]");
+                inputElement.value;
+
+                // cria o li
+                var liElement   = document.createElement('li');
+                // atribui texto para o li
+                var textElement = document.createTextNode(inputElement.value);
+                // adiciona o texto no li
+                liElement.appendChild(textElement);
+                // adiciona o li no ul
+                listElement.appendChild(liElement);
+
+                inputElement.value = "";
+
+            }
+
+        </script>
+
+    </body>
+
+</html>
